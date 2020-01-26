@@ -1,9 +1,10 @@
 class Room
 
-  attr_reader :theme
+  attr_reader :theme, :capacity
 
-  def initialize(theme)
+  def initialize(theme, capacity)
     @theme = theme
+    @capacity = capacity
     @guests = []
     @songs = []
   end
@@ -34,6 +35,15 @@ class Room
     @songs << title
   end
 
+
+  def check_room_capacity()
+    return @room1.room_capacity
+  end
+
+
+  def room_has_enough_capacity?(guest1)
+    return guest1.group_size < 20
+  end
 
 
 end

@@ -9,16 +9,15 @@ require_relative("../guests")
 class RoomTest < MiniTest::Test
 
   def setup
-    @room1 = Room.new("Blue Room")
-    @room2 = Room.new("Neon Room")
-    @guest1 = Guest.new("Scarlett")
-    @guest2 = Guest.new("Bill")
-    @guest3 = Guest.new("Akiko")
+    @room1 = Room.new("Blue Room", 10)
+    @room2 = Room.new("Neon Room", 20)
+    @guest1 = Guest.new("Scarlett", 10)
+    @guest2 = Guest.new("Bill", 20)
+    @guest3 = Guest.new("Akiko", 30)
 
     @song1 = Song.new("Walk This Way")
     @song2 = Song.new("My Addidas")
     @song3 = Song.new("King of Rock")
-
   end
 
 
@@ -47,7 +46,7 @@ class RoomTest < MiniTest::Test
   end
 
   def test_room_starts_with_no_songs()
-    assert_equal(0, @room1.song_count)
+    assert_equal(0, @room1.song_count())
   end
 
 
@@ -57,8 +56,18 @@ class RoomTest < MiniTest::Test
   end
 
 
+  def test_check_room_capacity()
+    assert_equal(20, @room2.capacity)
+  end
 
 
+  def test_room_has_enough_capacity__returns_true()
+    assert_equal(true, @room2.room_has_enough_capacity?(@guest1))
+  end
 
+
+  def test_room_has_enough_capacity__returns_false()
+    assert_equal(false, @room1.room_has_enough_capacity?(@guest3))
+  end
 
 end
