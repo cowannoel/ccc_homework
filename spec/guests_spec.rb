@@ -9,7 +9,6 @@ class GuestTest < MiniTest::Test
 
   def setup
     @guest = Guest.new("Scarlett")
-
   end
 
   def test_can_create_a_guest()

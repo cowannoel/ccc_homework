@@ -1,10 +1,11 @@
 class Room
 
-  attr_reader :name
+  attr_reader :theme
 
-  def initialize(name)
-    @name = name
+  def initialize(theme)
+    @theme = theme
     @guests = []
+    @songs = []
   end
 
 
@@ -21,6 +22,16 @@ class Room
   def check_out_guest(name)
     index = @guests.index(name)
     @guests.slice!(index, 1)
+  end
+
+
+  def song_count()
+    return @songs.count()
+  end
+
+
+  def add_song_to_room(title)
+    @songs << title
   end
 
 
